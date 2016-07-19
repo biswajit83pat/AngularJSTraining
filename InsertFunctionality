@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>The Ship</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+</head>
+
+<body>
+<div ng-controller="ParentController">
+
+Students List
+<div ng-repeat='item in items'>
+<span>{{item.name}}</span> 
+</div>
+
+<button ng-click="addInMemory()">Insert</button>
+
+<br>
+
+<div ng-repeat='item in items'>
+<span>{{$index+1}} {{item.name}} {{item.id}}</span> 
+</div>
+
+</div>
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('ParentController', function($scope){
+
+$scope.items = [ 
+{name:'Mary John', id:'10'},
+{name:'Rahul B', id:'12'},
+{name:'Ashoka R', id:'23'}
+]; 
+
+
+
+$scope.addInMemory = function() {
+var newItem = {name:'Ashish jain', id:'24'};
+$scope.items.push(newItem);
+};
+
+
+}) ;
+
+</script>
+</body>
+</html>
