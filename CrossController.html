@@ -1,0 +1,49 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>The Ship</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+</head>
+
+<body>
+<div ng-controller="ParentController">
+Billing Zip Code
+<input type="text" ng-model="billingZipCode">
+<button ng-click="addInMemory()">Save Billing</button>
+</div>
+
+
+<div ng-controller="ChildController">
+Billing Zip Code
+<input type="text" ng-model="childZipCode">
+<button ng-click="getFromMemory()">Use Billing</button>
+<button ng-click="">Save Shipping</button>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('ParentController', function($scope,$rootScope){
+
+$scope.addInMemory = function() {
+$rootScope.zipCode = $scope.billingZipCode;
+console.log($scope.billingZipCode);
+};
+
+
+}) ;
+
+app.controller('ChildController', function($scope,$rootScope){
+
+$scope.getFromMemory = function() {
+$scope.childZipCode = $rootScope.zipCode;
+console.log($scope.childZipCode);
+};
+
+});
+
+</script>
+</body>
+</html>
